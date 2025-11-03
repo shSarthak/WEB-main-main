@@ -151,7 +151,7 @@ const ShopSection = () => {
 
       {/* HORIZONTAL BANNER STRIP - ALWAYS SHOWN */}
       <div className="mb-10 h-32 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-2xl shadow-lg flex items-center justify-center text-white text-2xl font-bold">
-        <img src={image2}/>
+        Flash Sale Limited stock Available
       </div>
 
       {/* NEXT 3 PRODUCTS */}
