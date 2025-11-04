@@ -74,12 +74,26 @@ dbClient
     `);
 
     await dbClient.query(`
-  CREATE TABLE IF NOT EXISTS products (
+    CREATE TABLE IF NOT EXISTS products (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     price INTEGER NOT NULL,
     image TEXT NOT NULL,
     category TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  )
+
+`);
+await dbClient.query(`
+  CREATE TABLE IF NOT EXISTS banners (
+    id SERIAL PRIMARY KEY,
+    position TEXT NOT NULL,
+    image_url TEXT NOT NULL,
+    title TEXT,
+    subtitle TEXT,
+    link TEXT,
+    is_active BOOLEAN DEFAULT true,
+    display_order INTEGER DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   )
 `);
@@ -418,6 +432,102 @@ app.delete("/products/delete/:id", async (req, res) => {
   } catch (err) {
     console.error("❌ Delete product error:", err);
     res.status(500).json({ error: "Failed to delete product" });
+  }
+});
+
+// ========== BANNER ENDPOINTS ==========
+
+// Get all active banners
+app.get("/banners", async (req, res) => {
+  try {
+    const result = await dbClient.query(
+      "SELECT * FROM banners WHERE is_active = true ORDER BY display_order ASC"
+    );
+    res.json(result.rows);
+  } catch (err) {
+    console.error("❌ Fetch banners error:", err);
+    res.status(500).json({ error: "Failed to fetch banners" });
+  }
+});
+
+// Get banners by position
+app.get("/banners/position/:position", async (req, res) => {
+  const { position } = req.params;
+  try {
+    const result = await dbClient.query(
+      "SELECT * FROM banners WHERE position = $1 AND is_active = true ORDER BY display_order ASC",
+      [position]
+    );
+    res.json(result.rows);
+  } catch (err) {
+    console.error("❌ Fetch banners by position error:", err);
+    res.status(500).json({ error: "Failed to fetch banners" });
+  }
+});
+
+// Add a new banner (admin endpoint)
+app.post("/banners/add", async (req, res) => {
+  const { position, image_url, title, subtitle, link, is_active, display_order } = req.body;
+  
+  if (!position || !image_url) {
+    return res.status(400).json({ error: "Missing required fields: position and image_url" });
+  }
+
+  try {
+    const result = await dbClient.query(
+      `INSERT INTO banners (position, image_url, title, subtitle, link, is_active, display_order)
+       VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
+      [position, image_url, title || null, subtitle || null, link || null, is_active !== false, display_order || 0]
+    );
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error("❌ Add banner error:", err);
+    res.status(500).json({ error: "Failed to add banner" });
+  }
+});
+
+// Update a banner (admin endpoint)
+app.put("/banners/update/:id", async (req, res) => {
+  const { id } = req.params;
+  const { position, image_url, title, subtitle, link, is_active, display_order } = req.body;
+
+  try {
+    const result = await dbClient.query(
+      `UPDATE banners 
+       SET position = $1, image_url = $2, title = $3, subtitle = $4, link = $5, is_active = $6, display_order = $7
+       WHERE id = $8 RETURNING *`,
+      [position, image_url, title, subtitle, link, is_active, display_order, id]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: "Banner not found" });
+    }
+
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error("❌ Update banner error:", err);
+    res.status(500).json({ error: "Failed to update banner" });
+  }
+});
+
+// Delete a banner (admin endpoint)
+app.delete("/banners/delete/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const result = await dbClient.query(
+      `DELETE FROM banners WHERE id = $1 RETURNING *`,
+      [id]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: "Banner not found" });
+    }
+
+    res.json({ message: "Banner deleted successfully" });
+  } catch (err) {
+    console.error("❌ Delete banner error:", err);
+    res.status(500).json({ error: "Failed to delete banner" });
   }
 });
 

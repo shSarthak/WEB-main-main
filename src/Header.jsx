@@ -3,6 +3,7 @@ import { Search, Phone, User, ShoppingCart, X } from 'lucide-react';
 import GoogleLoginButton from './GoogleLoginButton';
 import { Eye, EyeOff, Heart } from 'lucide-react';
 import { Link } from "react-router-dom";
+import logo from "./assets/logo.jpeg"; // Import your logo
 
 // Sign In Modal Component (keep your existing markup/ styles)
 const SignInModal = ({ isOpen, onClose, onLoginSuccess }) => {
@@ -111,7 +112,7 @@ const SignInModal = ({ isOpen, onClose, onLoginSuccess }) => {
   );
 };
 
-// Header Component (your original styles preserved)
+// Header Component with Logo
 const Header = () => {
   const [cartCount, setCartCount] = useState(0);
   const [showSignInModal, setShowSignInModal] = useState(false);
@@ -155,9 +156,9 @@ const Header = () => {
       }
     };
 
-      console.log("Header mounted. storedUser:", storedUser);
-  window.addEventListener('cart-updated', handler);
-  console.log("Header: cart-updated listener attached");
+    console.log("Header mounted. storedUser:", storedUser);
+    window.addEventListener('cart-updated', handler);
+    console.log("Header: cart-updated listener attached");
 
     return () => {
       window.removeEventListener('cart-updated', handler);
@@ -184,6 +185,14 @@ const Header = () => {
       <div className="bg-white border-b px-4 py-2">
         <div className="max-w-7xl mx-auto flex justify-between items-center text-sm">
           <div className="flex items-center space-x-4">
+            {/* Logo added here */}
+            <Link to="/" className="flex items-center mr-4">
+              <img
+                src={logo}
+                alt="Company Logo"
+                className="h-8 object-contain"
+              />
+            </Link>
             <span>Privacy Policy</span>
             <span>|</span>
             <span>Terms & Conditions</span>
