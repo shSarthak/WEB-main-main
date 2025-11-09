@@ -344,17 +344,17 @@ const ShopSection = () => {
         )}
 
         {/* Right Banner */}
-        {topRightBanner ? (
+        {zigzagLeftBanner ? (
           <div className="h-80 rounded-2xl shadow-lg overflow-hidden flex items-center justify-center relative">
             <img 
-              src={topRightBanner.image_url} 
-              alt={topRightBanner.title}
+              src={zigzagLeftBanner.image_url} 
+              alt={zigzagLeftBanner.title}
               className="w-full h-full object-cover"
             />
-            {topRightBanner.title && (
+            {zigzagLeftBanner.title && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-white text-2xl font-bold text-center bg-black bg-opacity-40 px-4 py-2 rounded-lg">
-                  {topRightBanner.title}
+                  {zigzagLeftBanner.title}
                 </div>
               </div>
             )}
@@ -412,10 +412,29 @@ const ShopSection = () => {
 
       {/* CLOSING DOUBLE BANNER */}
       <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="h-52 bg-gradient-to-br from-slate-800 to-slate-600 rounded-2xl shadow-xl flex items-center justify-center text-white text-2xl font-bold text-center p-6">
-          🚚 Free Shipping <br /> on Orders Above ₹5000
+        <div className="h-80 w-auto bg-gradient-to-br from-slate-800 to-slate-600 rounded-2xl shadow-xl flex items-center justify-center text-white text-2xl font-bold text-center p-6 overflow-hidden relative">
+          {topRightBanner ? (
+          <div className="h-80 rounded-2xl shadow-lg overflow-hidden flex items-center justify-center relative">
+            <img 
+              src={topRightBanner.image_url} 
+              alt={topRightBanner.title}
+              className="w-full h-full object-cover"
+            />
+            {topRightBanner.title && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-white text-2xl font-bold text-center bg-black bg-opacity-40 px-4 py-2 rounded-lg">
+                  {topRightBanner.title}
+                </div>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="h-80 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-2xl shadow-lg flex items-center justify-center text-white text-2xl font-bold">
+            🚚 Free Shipping <br /> on Orders Above ₹5000
+          </div>
+        )}
         </div>
-        <div className="h-52 bg-gradient-to-br from-teal-600 to-cyan-600 rounded-2xl shadow-xl flex items-center justify-center text-white text-2xl font-bold text-center p-6">
+        <div className="h-80 bg-gradient-to-br from-teal-600 to-cyan-600 rounded-2xl shadow-xl flex items-center justify-center text-white text-2xl font-bold text-center p-6">
           🔒 Secure Payments <br /> & Easy Returns
         </div>
       </div>

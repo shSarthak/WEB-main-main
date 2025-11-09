@@ -29,7 +29,7 @@ const banners = [
   {
     position: "top_asymmetric_left",
     image_url: "https://iili.io/Kbw75sp.jpg",
-    title: "Big Tech Sale - Up to 50% OFF",
+    title: "",
     subtitle: null,
     link: null,
     is_active: true,
@@ -39,8 +39,8 @@ const banners = [
   // Top Asymmetric Banner - Right (Small)
   {
     position: "top_asymmetric_right",
-    image_url: "https://iili.io/Kbw7a1I.jpg",
-    title: "Festive Offers",
+    image_url: "https://iili.io/Kbw7YqN.jpg",
+    title: "",
     subtitle: null,
     link: null,
     is_active: true,
@@ -61,8 +61,8 @@ const banners = [
   // Zigzag Banner - Left (Small)
   {
     position: "zigzag_left",
-    image_url: "https://iili.io/Kbw7YqN.jpg",
-    title: "PC Parts Exclusive Deals",
+    image_url: "https://iili.io/Kbw7a1I.jpg",
+    title: "",
     subtitle: null,
     link: null,
     is_active: true,
