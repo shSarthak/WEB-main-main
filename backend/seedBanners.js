@@ -28,7 +28,7 @@ const banners = [
   // Top Asymmetric Banner - Left (Large)
   {
     position: "top_asymmetric_left",
-    image_url: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800",
+    image_url: "https://iili.io/Kbw75sp.jpg",
     title: "Big Tech Sale - Up to 50% OFF",
     subtitle: null,
     link: null,
@@ -39,7 +39,7 @@ const banners = [
   // Top Asymmetric Banner - Right (Small)
   {
     position: "top_asymmetric_right",
-    image_url: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400",
+    image_url: "https://iili.io/Kbw7a1I.jpg",
     title: "Festive Offers",
     subtitle: null,
     link: null,
@@ -50,7 +50,7 @@ const banners = [
   // Horizontal Banner Strip
   {
     position: "horizontal_strip",
-    image_url: "https://images.unsplash.com/photo-1557821552-17105176677c?w=1200",
+    image_url: "https://iili.io/Kbw7YqN.jpg",
     title: "Flash Sale Limited Stock Available",
     subtitle: "Grab Now!",
     link: null,
@@ -61,7 +61,7 @@ const banners = [
   // Zigzag Banner - Left (Small)
   {
     position: "zigzag_left",
-    image_url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600",
+    image_url: "https://iili.io/Kbw7YqN.jpg",
     title: "PC Parts Exclusive Deals",
     subtitle: null,
     link: null,
