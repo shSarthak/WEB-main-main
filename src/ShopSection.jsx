@@ -270,6 +270,9 @@ const ShopSection = () => {
   const zigzagLeftBanner = getBanner("zigzag_left");
   const zigzagRightBanner = getBanner("zigzag_right");
 
+  // New Secure Payments Banner
+  const securePaymentsBanner = getBanner("secure_payments");
+
   return (
     <section className="w-full bg-gray-50 py-10 px-6 md:px-16">
       {/* HERO BANNER - Full width */}
@@ -412,8 +415,9 @@ const ShopSection = () => {
 
       {/* CLOSING DOUBLE BANNER */}
       <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="h-80 w-auto bg-gradient-to-br from-slate-800 to-slate-600 rounded-2xl shadow-xl flex items-center justify-center text-white text-2xl font-bold text-center p-6 overflow-hidden relative">
-          {topRightBanner ? (
+        
+        {/* LEFT BANNER */}
+        {topRightBanner ? (
           <div className="h-80 rounded-2xl shadow-lg overflow-hidden flex items-center justify-center relative">
             <img 
               src={topRightBanner.image_url} 
@@ -429,14 +433,35 @@ const ShopSection = () => {
             )}
           </div>
         ) : (
-          <div className="h-80 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-2xl shadow-lg flex items-center justify-center text-white text-2xl font-bold">
+          <div className="h-80 bg-gradient-to-br from-slate-800 to-slate-600 rounded-2xl shadow-lg flex items-center justify-center text-white text-2xl font-bold">
             🚚 Free Shipping <br /> on Orders Above ₹5000
           </div>
         )}
+
+        {/* RIGHT BANNER — secure_payments DYNAMIC */}
+        <div className="h-80 rounded-2xl shadow-xl overflow-hidden flex items-center justify-center relative">
+          {securePaymentsBanner ? (
+            <>
+              <img
+                src={securePaymentsBanner.image_url}
+                alt={securePaymentsBanner.title}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+              <div className="z-10 text-white text-3xl font-bold text-center px-6">
+                {securePaymentsBanner.title}
+                {securePaymentsBanner.subtitle && (
+                  <p className="mt-2 text-lg font-normal">{securePaymentsBanner.subtitle}</p>
+                )}
+              </div>
+            </>
+          ) : (
+            <div className="h-80 bg-gradient-to-br from-teal-600 to-cyan-600 rounded-2xl shadow-xl flex items-center justify-center text-white text-2xl font-bold text-center p-6">
+              🔒 Secure Payments <br /> & Easy Returns
+            </div>
+          )}
         </div>
-        <div className="h-80 bg-gradient-to-br from-teal-600 to-cyan-600 rounded-2xl shadow-xl flex items-center justify-center text-white text-2xl font-bold text-center p-6">
-          🔒 Secure Payments <br /> & Easy Returns
-        </div>
+
       </div>
     </section>
   );
