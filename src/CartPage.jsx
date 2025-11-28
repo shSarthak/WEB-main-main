@@ -73,6 +73,12 @@ const CartPage = () => {
     }
   };
 
+  const payNow = () => {
+  console.log("Pay Now clicked");
+  // Add your payment logic here
+};
+
+
   // Calculate total price
   const calculateTotal = () => {
     return cart.reduce((total, item) => {
@@ -146,14 +152,23 @@ const CartPage = () => {
           </div>
           
           {/* Total Section */}
-          <div className="bg-white p-4 rounded shadow border-t-4 border-green-500">
-            <div className="flex justify-between items-center">
-              <span className="text-lg font-semibold">Total:</span>
-              <span className="text-xl font-bold text-green-600">
-                ₹{calculateTotal().toLocaleString('en-IN')}
-              </span>
+            <div className="bg-white p-4 rounded shadow border-t-4 border-green-500">
+              <div className="flex justify-between items-center">
+                <span className="text-lg font-semibold">Total:</span>
+                <span className="text-xl font-bold text-green-600">
+                  ₹{calculateTotal().toLocaleString('en-IN')}
+                </span>
+              </div>
+
+              {/* Pay Now Button */}
+              <button
+                onClick={payNow}
+                className="mt-4 w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded"
+              >
+                Pay Now
+              </button>
             </div>
-          </div>
+
         </>
       )}
     </div>
