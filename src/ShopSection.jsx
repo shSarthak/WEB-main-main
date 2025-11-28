@@ -277,11 +277,11 @@ const ShopSection = () => {
     <section className="w-full bg-gray-50 py-10 px-6 md:px-16">
       {/* HERO BANNER - Full width */}
       {heroBanner ? (
-        <div className="w-full mb-10 h-80 rounded-3xl shadow-2xl flex items-center justify-center text-white text-4xl font-bold relative overflow-hidden">
+        <div className="w-full mb-10 h-auto rounded-3xl shadow-2xl flex items-center justify-center text-white text-4xl font-bold relative overflow-hidden bg-gray-900">
           <img 
             src={heroBanner.image_url} 
             alt={heroBanner.title}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-contain"
           />
           <div className="absolute inset-0 bg-black opacity-30"></div>
           <div className="z-10 text-center px-4">
@@ -293,7 +293,7 @@ const ShopSection = () => {
           </div>
         </div>
       ) : (
-        <div className="w-full mb-10 h-80 bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 rounded-3xl shadow-2xl flex items-center justify-center text-white text-4xl font-bold relative overflow-hidden">
+        <div className="w-full mb-10 h-auto bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 rounded-3xl shadow-2xl flex items-center justify-center text-white text-4xl font-bold relative overflow-hidden">
           <div className="absolute inset-0 bg-black opacity-20"></div>
           <div className="z-10 text-center">
             <div className="text-5xl mb-4">🚀</div>
@@ -326,14 +326,14 @@ const ShopSection = () => {
       <div className="mb-10 grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Left Banner */}
         {topLeftBanner ? (
-          <div className="md:col-span-2 h-80 rounded-2xl shadow-lg overflow-hidden flex items-center justify-center relative">
+          <div className="md:col-span-2 h-auto rounded-2xl shadow-lg overflow-hidden flex items-center justify-center relative bg-gray-100">
             <img 
               src={topLeftBanner.image_url} 
               alt={topLeftBanner.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
             {topLeftBanner.title && (
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="text-white text-3xl font-bold text-center bg-black bg-opacity-40 px-6 py-3 rounded-lg">
                   {topLeftBanner.title}
                 </div>
@@ -341,21 +341,21 @@ const ShopSection = () => {
             )}
           </div>
         ) : (
-          <div className="md:col-span-2 h-80 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl shadow-lg flex items-center justify-center text-white text-3xl font-bold">
+          <div className="md:col-span-2 h-auto bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl shadow-lg flex items-center justify-center text-white text-3xl font-bold">
             🖥️ Big Tech Sale - Up to 50% OFF
           </div>
         )}
 
         {/* Right Banner */}
         {zigzagLeftBanner ? (
-          <div className="h-80 rounded-2xl shadow-lg overflow-hidden flex items-center justify-center relative">
+          <div className="h-auto rounded-2xl shadow-lg overflow-hidden flex items-center justify-center relative bg-gray-100">
             <img 
               src={zigzagLeftBanner.image_url} 
               alt={zigzagLeftBanner.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
             {zigzagLeftBanner.title && (
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="text-white text-2xl font-bold text-center bg-black bg-opacity-40 px-4 py-2 rounded-lg">
                   {zigzagLeftBanner.title}
                 </div>
@@ -363,7 +363,7 @@ const ShopSection = () => {
             )}
           </div>
         ) : (
-          <div className="h-80 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-2xl shadow-lg flex items-center justify-center text-white text-2xl font-bold">
+          <div className="h-auto bg-gradient-to-br from-blue-500 to-cyan-400 rounded-2xl shadow-lg flex items-center justify-center text-white text-2xl font-bold">
             🎉 Festive Offers
           </div>
         )}
@@ -379,13 +379,13 @@ const ShopSection = () => {
 
       {/* HORIZONTAL BANNER STRIP */}
       {horizontalBanner ? (
-        <div className="my-10 h-32 rounded-2xl shadow-lg overflow-hidden flex items-center justify-center relative">
+        <div className="my-10 h-32 rounded-2xl shadow-lg overflow-hidden flex items-center justify-center relative bg-gray-100">
           <img 
             src={horizontalBanner.image_url} 
             alt={horizontalBanner.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
           />
-          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30">
+          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 pointer-events-none">
             <div className="text-white text-2xl font-bold text-center px-4">
               {horizontalBanner.title}
             </div>
@@ -418,14 +418,14 @@ const ShopSection = () => {
         
         {/* LEFT BANNER */}
         {topRightBanner ? (
-          <div className="h-80 rounded-2xl shadow-lg overflow-hidden flex items-center justify-center relative">
+          <div className="h-auto rounded-2xl shadow-lg overflow-hidden flex items-center justify-center relative bg-gray-100">
             <img 
               src={topRightBanner.image_url} 
               alt={topRightBanner.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
             {topRightBanner.title && (
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="text-white text-2xl font-bold text-center bg-black bg-opacity-40 px-4 py-2 rounded-lg">
                   {topRightBanner.title}
                 </div>
@@ -433,19 +433,19 @@ const ShopSection = () => {
             )}
           </div>
         ) : (
-          <div className="h-80 bg-gradient-to-br from-slate-800 to-slate-600 rounded-2xl shadow-lg flex items-center justify-center text-white text-2xl font-bold">
+          <div className="h-auto bg-gradient-to-br from-slate-800 to-slate-600 rounded-2xl shadow-lg flex items-center justify-center text-white text-2xl font-bold">
             🚚 Free Shipping <br /> on Orders Above ₹5000
           </div>
         )}
 
         {/* RIGHT BANNER — secure_payments DYNAMIC */}
-        <div className="h-80 rounded-2xl shadow-xl overflow-hidden flex items-center justify-center relative">
+        <div className="h-auto rounded-2xl shadow-xl overflow-hidden flex items-center justify-center relative bg-gray-100">
           {securePaymentsBanner ? (
             <>
               <img
                 src={securePaymentsBanner.image_url}
                 alt={securePaymentsBanner.title}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-contain"
               />
               <div className="absolute inset-0 bg-black bg-opacity-40"></div>
               <div className="z-10 text-white text-3xl font-bold text-center px-6">
@@ -456,7 +456,7 @@ const ShopSection = () => {
               </div>
             </>
           ) : (
-            <div className="h-80 bg-gradient-to-br from-teal-600 to-cyan-600 rounded-2xl shadow-xl flex items-center justify-center text-white text-2xl font-bold text-center p-6">
+            <div className="h-auto bg-gradient-to-br from-teal-600 to-cyan-600 rounded-2xl shadow-xl flex items-center justify-center text-white text-2xl font-bold text-center p-6">
               🔒 Secure Payments <br /> & Easy Returns
             </div>
           )}
