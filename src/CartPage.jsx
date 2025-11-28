@@ -37,7 +37,7 @@ const CartPage = () => {
           quantity: newQuantity
         })
       });
-      
+
       if (res.ok) {
         // Refresh the cart to get updated data
         await fetchCart();
@@ -57,7 +57,7 @@ const CartPage = () => {
       const res = await fetch(`http://localhost:5000/cart/remove/${itemId}`, {
         method: "DELETE"
       });
-      
+
       if (res.ok) {
         // Remove item from local state immediately for better UX
         setCart(prev => prev.filter(item => item.id !== itemId));
@@ -74,9 +74,9 @@ const CartPage = () => {
   };
 
   const payNow = () => {
-  console.log("Pay Now clicked");
-  // Add your payment logic here
-};
+    console.log("Pay Now clicked");
+    // Add your payment logic here
+  };
 
 
   // Calculate total price
@@ -111,7 +111,7 @@ const CartPage = () => {
                 <div className="flex-1">
                   <h3 className="font-medium">{item.item_name}</h3>
                   <div className="flex items-center space-x-3 mt-2">
-                    <button 
+                    <button
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
                       disabled={loading}
                       className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300 disabled:opacity-50"
@@ -121,14 +121,14 @@ const CartPage = () => {
                     <span className="text-sm text-gray-600 min-w-8 text-center">
                       {item.quantity}
                     </span>
-                    <button 
+                    <button
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
                       disabled={loading}
                       className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300 disabled:opacity-50"
                     >
                       +
                     </button>
-                    <button 
+                    <button
                       onClick={() => removeFromCart(item.id)}
                       disabled={loading}
                       className="ml-4 text-sm text-red-600 hover:text-red-800 disabled:opacity-50"
@@ -150,25 +150,44 @@ const CartPage = () => {
               </div>
             ))}
           </div>
-          
+
           {/* Total Section */}
-            <div className="bg-white p-4 rounded shadow border-t-4 border-green-500">
+          <div className="bg-gradient-to-br from-white to-gray-50 p-6 rounded-xl shadow-lg border border-gray-200">
+            {/* Total Amount Section */}
+            <div className="bg-white p-4 rounded-lg border-l-4 border-green-500 mb-4">
               <div className="flex justify-between items-center">
-                <span className="text-lg font-semibold">Total:</span>
-                <span className="text-xl font-bold text-green-600">
+                <span className="text-gray-600 font-medium">Total Amount</span>
+                <span className="text-3xl font-bold text-gray-900">
                   ₹{calculateTotal().toLocaleString('en-IN')}
                 </span>
               </div>
-
-              {/* Pay Now Button */}
-              <button
-                onClick={payNow}
-                className="mt-4 w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded"
-              >
-                Pay Now
-              </button>
+              <p className="text-xs text-gray-500 mt-1">All taxes included</p>
             </div>
 
+            {/* Pay Now Button */}
+            <button
+              onClick={payNow}
+              className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200 flex items-center justify-center gap-2 group"
+            >
+              <span className="text-lg">Pay Now</span>
+              <svg
+                className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </button>
+
+            {/* Security Badge */}
+            <div className="flex items-center justify-center gap-2 mt-4 text-xs text-gray-500">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+              </svg>
+              <span>Secure Payment Gateway</span>
+            </div>
+          </div>
         </>
       )}
     </div>
